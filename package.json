@@ -23,8 +23,7 @@
     "eject": "react-scripts eject",
     "rm": "rm -rf react-task-app",
     "mv": "mv build react-task-app",
-    "git": "git add . && git commit && git push origin master",
-    "deploy": "npm run rm && npm run build && npm run mv && npm run git && scp -rq ./react-task-app alice.helixcode.net:/home/nepia/public_html"
+    "deploy": "npm run rm && npm run build && npm run mv && scp -rq ./react-task-app alice.helixcode.net:/home/nepia/public_html"
   },
   "eslintConfig": {
     "extends": [

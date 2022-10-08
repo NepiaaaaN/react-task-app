@@ -64,7 +64,7 @@ function App() {
         />
         <Stack direction="row" spacing={1}>
           <Button variant="outlined" color="success" onClick={handleAddTodo}>追加</Button>
-          <Button variant="outlined" color="error" onClick={handleClear}>完了済タスクを削除</Button>
+          <Button variant="outlined" color="error" onClick={handleClear}>完了済タスク削除</Button>
         </Stack>
         <Typography variant="subtitle1" gutterBottom>残タスク : {todos.filter((todo) => !todo.completed).length}</Typography>
         <TodoList todos={todos} toggleTodo={toggleTodo}/>
