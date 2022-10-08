@@ -2,7 +2,7 @@
   "name": "react-tutorial-youtube",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://NepiaaaaN.github.io/react-task-app/",
+  "homepage": "./",
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
@@ -21,11 +21,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "rm": "rm -rf docs",
-    "mv": "mv build docs",
+    "rm": "rm -rf react-task-app",
+    "mv": "mv build react-task-app",
     "git": "git add . && git commit && git push origin master",
-    "deploy": "npm run rm && npm run build && npm run mv && npm run git",
-    "deployToAlice": "scp -rq  alice.helixcode.net:/home/nepia"
+    "deploy": "npm run rm && npm run build && npm run mv && npm run git && scp -rq ./react-task-app alice.helixcode.net:/home/nepia/public_html"
   },
   "eslintConfig": {
     "extends": [
