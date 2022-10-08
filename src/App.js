@@ -1,12 +1,27 @@
 import { useState, useRef } from "react";
 // import './App.css';
+import { createTheme, CssBaseline, ThemeProvider, Stack, Button, TextField, Typography } from "@mui/material";
 import TodoList from "./TodoList.jsx"
 import { v4 as uuidv4 } from "uuid";
+import { Container } from "@mui/system";
 
 function App() {
-  const [todos, setTodos] = useState([]);
-
+  const apptheme = createTheme({
+    palette: {
+      typography: {
+        fontfamily: [
+          'Roboto',
+          '"Noto Sans JP"',
+          '"Helvetica"',
+          'Arial',
+          'sans-serif',
+        ].join(','),
+      },
+      mode: 'dark',
+    }
+  });
   const todoNameRef = useRef();
+  const [todos, setTodos] = useState([]);
 
   const handleAddTodo = (e) => {
     // タスクを追加
@@ -33,13 +48,26 @@ function App() {
   }
 
   return (
-    <>
-      <TodoList todos={todos} toggleTodo={toggleTodo}/>
-      <input type="text" ref={todoNameRef}/>
-      <button onClick={handleAddTodo}>タスクを追加</button>
-      <button onClick={handleClear}>完了したタスクの削除</button>
-      <div>残りのタスク : {todos.filter((todo) => !todo.completed).length}</div>
-    </>
+    <ThemeProvider theme={apptheme}>
+      <CssBaseline />
+      <Container>
+        <h1>Task管理ツール</h1>
+        <TextField
+          label="Task"
+          id="outlined-basic"
+          variant="outlined"
+          margin="normal"
+          inputRef={todoNameRef}
+          helperText={todoNameRef?.current?.validationMessage}
+        />
+        <Stack direction="row" spacing={1}>
+          <Button variant="outlined" color="primary" onClick={handleAddTodo}>追加</Button>
+          <Button variant="outlined" color="error" onClick={handleClear}>完了済タスク削除</Button>
+        </Stack>
+        <Typography variant="subtitle1" gutterBottom>残タスク : {todos.filter((todo) => !todo.completed).length}</Typography>
+        <TodoList todos={todos} toggleTodo={toggleTodo}/>
+      </Container>
+    </ThemeProvider>
   );
 }
 

@@ -1,3 +1,5 @@
+import { Checkbox, FormControlLabel } from '@mui/material';
+import { Stack } from '@mui/system';
 import React from 'react';
 
 const Todo = ({ todo, toggleTodo }) => {
@@ -6,15 +8,18 @@ const Todo = ({ todo, toggleTodo }) => {
   };
 
   return (
-    <div>
-      <label>
-        <input
-        type="checkbox"
-        checked={todo.completed}
-        readOnly onChange={handleTodoClick} />
-      </label>
-      {todo.name}
-    </div>
+    <Stack>
+      <FormControlLabel
+        control={
+          <Checkbox
+          checked={todo.completed}
+          onChange={handleTodoClick}
+          readOnly
+          />
+        }
+        label={todo.name}
+      />
+    </Stack>
   )
 };
 
